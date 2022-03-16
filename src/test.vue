@@ -1,8 +1,7 @@
 <template>
-  <div id="app" class="mx-3 my-2">
+  <div id="app" class="mx-2 my-2">
     <input v-model="walletAddress" placeholder="Wallet Address" />
     <button @click="walletQuery(walletAddress)">Submit</button> <br />
-
     <br />
     ERC-20 contract :<b>{{ this.contractAddress }}</b>  <br />
     Name: <b>{{ metaData.name }}</b> <br />
@@ -11,10 +10,9 @@
 
     User Wallet : {{walletAddress}} <br/>
     <div v-for="item in walletBalance" :key="item.name">
-      Name : {{item.name}} <br/>
-      SYM: {{item.symbol}} <br/>
-      Balance: {{item.balance}} <br/>
-
+      Name : {{ item.name}} <br/>
+      SYM: {{ item.symbol}} <br/>
+      Balance: {{ item.balance}} <br/>
     </div>
   </div>
 </template>
@@ -33,7 +31,6 @@ export default {
       contractAddress: "0x77737d90458ef4b0D5253342bD22ceEC406Eba80",
       walletBalance: []
     };
-    
   },
   methods: {
     async walletQuery(data) {
@@ -55,10 +52,14 @@ export default {
       console.log("Wallet Balance: ",this.walletBalance )
     },
   },
+
+  // const tokenValue = Moralis.Units.FromWei("2000000000000000000", 6)
+
+  
   computed: {},
   watch: {},
   async mounted() {
-    Moralis.start({ serverUrl, appId});
+    Moralis.start({ serverUrl, appId });
     window.Moralis = Moralis;
     await Moralis.enableWeb3();
   },
@@ -70,3 +71,6 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
 }
 </style>
+
+
+
