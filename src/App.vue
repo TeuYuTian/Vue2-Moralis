@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="mx-3 my-2">
+  <div id="app" class="mx-4 my-4">
     <input v-model="walletAddress" placeholder="Wallet Address" />
     <button @click="walletQuery(walletAddress)">Submit</button> <br />
 
@@ -59,7 +59,7 @@ export default {
   computed: {},
   watch: {},
   async mounted() {
-    Moralis.start({ serverUrl, appId });
+    Moralis.start({serverUrl, appId});
     window.Moralis = Moralis;
     await Moralis.enableWeb3();
   },
