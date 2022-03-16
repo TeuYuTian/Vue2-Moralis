@@ -11,11 +11,11 @@
 
     User Wallet : {{walletAddress}} <br/>
     <div v-for="item in walletBalance" :key="item.name">
-      Name : {{item.name}} <br/>
-      SYM: {{item.symbol}} <br/>
-      Balance: {{item.balance}} <br/>
-
+      Name : {{ item.name}} <br/>
+      SYM: {{ item.symbol}} <br/>
+      Balance: {{ item.balance}} <br/>
     </div>
+
   </div>
 </template>
 
@@ -33,7 +33,6 @@ export default {
       contractAddress: "0x77737d90458ef4b0D5253342bD22ceEC406Eba80",
       walletBalance: []
     };
-    
   },
   methods: {
     async walletQuery(data) {
@@ -53,12 +52,14 @@ export default {
       }
       this.walletBalance = await Moralis.Web3API.account.getTokenBalances(option2);
       console.log("Wallet Balance: ",this.walletBalance )
+
+
     },
   },
   computed: {},
   watch: {},
   async mounted() {
-    Moralis.start({ serverUrl, appId});
+    Moralis.start({ serverUrl, appId });
     window.Moralis = Moralis;
     await Moralis.enableWeb3();
   },
